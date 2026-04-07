@@ -5,6 +5,21 @@ import { useFetch, fetchAreas } from "@/utils";
 import { ErrorState, EmptyState } from "@/component/common/state-display";
 import { GlobeIcon } from "@/component/ui/Icon";
 
+const getAreaFlag = (area: string) => {
+  const flags: Record<string, string> = {
+    American: "🇺🇸", British: "🇬🇧", Canadian: "🇨🇦", Chinese: "🇨🇳",
+    Croatian: "🇭🇷", Dutch: "🇳🇱", Egyptian: "🇪🇬", Filipino: "🇵🇭",
+    French: "🇫🇷", Greek: "🇬🇷", Indian: "🇮🇳", Irish: "🇮🇪",
+    Italian: "🇮🇹", Jamaican: "🇯🇲", Japanese: "🇯🇵", Kenyan: "🇰🇪",
+    Malaysian: "🇲🇾", Mexican: "🇲🇽", Moroccan: "🇲🇦", Polish: "🇵🇱",
+    Portuguese: "🇵🇹", Russian: "🇷🇺", Spanish: "🇪🇸", Thai: "🇹🇭",
+    Tunisian: "🇹🇳", Turkish: "🇹🇷", Vietnamese: "🇻🇳", Algerian: "🇩🇿",
+    Argentinian: "🇦🇷", Australian: "🇦🇺", Norwegian: "🇳🇴", "Saudi Arabian": "🇸🇦",
+    Slovakian: "🇸🇰", Syrian: "🇸🇾", Ukrainian: "🇺🇦"
+  };
+  return flags[area] || "🌍";
+};
+
 export default function AreasPage() {
   const { data: areas, isLoading, error, refetch } = useFetch({
     fetcher: fetchAreas,
@@ -38,9 +53,10 @@ export default function AreasPage() {
             <Link 
               key={item.strArea} 
               href={`/area/${item.strArea}`}
-              className="bg-white p-6 rounded-[1.5rem] shadow-sm border border-[#E5E7EB] flex items-center justify-center text-center transition-all hover:shadow-md hover:-translate-y-1 hover:border-[#FF6B6B]/20 group"
+              className="bg-white p-6 rounded-[1.5rem] shadow-sm border border-[#E5E7EB] flex flex-col items-center justify-center text-center transition-all hover:shadow-md hover:-translate-y-1 hover:border-[#FF6B6B]/20 group"
             >
-              <h2 className="text-lg font-bold text-[#4B5563] group-hover:text-[#FF6B6B] transition-colors">{item.strArea}</h2>
+              <span className="text-4xl mb-3 grayscale-[0.2] transition-transform group-hover:scale-110 group-hover:grayscale-0">{getAreaFlag(item.strArea)}</span>
+              <h2 className="text-lg font-bold text-[#1F2937] group-hover:text-[#FF6B6B] transition-colors">{item.strArea}</h2>
             </Link>
           ))}
         </div>

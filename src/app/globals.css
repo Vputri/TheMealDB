@@ -91,7 +91,7 @@
   }
 
   .breadcrumb-separator {
-    @apply text-[#9CA3AF];
+    @apply text-[#9CA3AF] mx-2;
   }
 
   /* State Containers */

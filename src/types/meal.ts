@@ -11,6 +11,22 @@ export type IngredientListResponse = {
   meals: Ingredient[];
 };
 
+export type Category = {
+  strCategory: string;
+};
+
+export type CategoryListResponse = {
+  meals: Category[];
+};
+
+export type Area = {
+  strArea: string;
+};
+
+export type AreaListResponse = {
+  meals: Area[];
+};
+
 export type MealPreview = {
   strMeal: string;
   strMealThumb: string;

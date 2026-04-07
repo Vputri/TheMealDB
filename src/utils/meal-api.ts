@@ -5,6 +5,8 @@ import type {
   MealDetailResponse,
   MealDetail,
   ParsedIngredient,
+  CategoryListResponse,
+  AreaListResponse,
 } from "@/types/meal";
 
 export async function fetchIngredients() {
@@ -14,8 +16,36 @@ export async function fetchIngredients() {
   return data.meals ?? [];
 }
 
+export async function fetchCategories() {
+  const res = await fetch(MEALDB_ENDPOINTS.listCategories);
+  if (!res.ok) throw new Error("Gagal memuat daftar kategori.");
+  const data: CategoryListResponse = await res.json();
+  return data.meals ?? [];
+}
+
+export async function fetchAreas() {
+  const res = await fetch(MEALDB_ENDPOINTS.listAreas);
+  if (!res.ok) throw new Error("Gagal memuat daftar area.");
+  const data: AreaListResponse = await res.json();
+  return data.meals ?? [];
+}
+
 export async function fetchMealsByIngredient(ingredientName: string) {
   const res = await fetch(MEALDB_ENDPOINTS.filterByIngredient(ingredientName));
+  if (!res.ok) throw new Error("Gagal memuat daftar masakan.");
+  const data: MealFilterResponse = await res.json();
+  return data.meals ?? [];
+}
+
+export async function fetchMealsByCategory(category: string) {
+  const res = await fetch(MEALDB_ENDPOINTS.filterByCategory(category));
+  if (!res.ok) throw new Error("Gagal memuat daftar masakan.");
+  const data: MealFilterResponse = await res.json();
+  return data.meals ?? [];
+}
+
+export async function fetchMealsByArea(area: string) {
+  const res = await fetch(MEALDB_ENDPOINTS.filterByArea(area));
   if (!res.ok) throw new Error("Gagal memuat daftar masakan.");
   const data: MealFilterResponse = await res.json();
   return data.meals ?? [];

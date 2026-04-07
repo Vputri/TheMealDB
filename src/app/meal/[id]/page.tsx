@@ -4,8 +4,9 @@ import React from "react";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { fetchMealDetail, parseMealIngredients, getYouTubeEmbedUrl } from "@/utils/meal-api";
-import { useFetch } from "@/utils/hooks";
+import { useFetch, useFavorites } from "@/utils";
 import { Breadcrumbs } from "@/component/common/breadcrumbs";
+import { cn } from "@/utils/cn";
 import { ErrorState } from "@/component/common/state-display";
 import { ChefHatIcon, PlayIcon } from "@/component/ui/Icon";
 
@@ -16,6 +17,8 @@ export default function MealDetailPage() {
   const { data: meal, isLoading, error, refetch } = useFetch({
     fetcher: () => fetchMealDetail(id),
   });
+  
+  const { isFavorite, toggleFavorite, isLoaded: isFavsLoaded } = useFavorites();
 
   const ingredients = meal ? parseMealIngredients(meal) : [];
   const youtubeUrl = meal ? getYouTubeEmbedUrl(meal.strYoutube) : null;
@@ -43,7 +46,7 @@ export default function MealDetailPage() {
   }
 
   return (
-    <main className="max-w-4xl mx-auto px-6 py-12 pb-24">
+    <main className="max-w-7xl mx-auto px-6 py-8 md:py-12 pb-24">
       <Breadcrumbs
         items={[
           { label: "Home", href: "/" },
@@ -71,9 +74,26 @@ export default function MealDetailPage() {
                   {meal.strArea}
                 </span>
               </div>
-              <h1 className="text-white text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]">
-                {meal.strMeal}
-              </h1>
+              <div className="flex items-center justify-between gap-4">
+                <h1 className="text-white text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]">
+                  {meal.strMeal}
+                </h1>
+                
+                {isFavsLoaded && (
+                  <button 
+                    onClick={() => toggleFavorite({ idMeal: meal.idMeal, strMeal: meal.strMeal, strMealThumb: meal.strMealThumb })}
+                    className={cn(
+                      "flex-shrink-0 flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-full border border-white/20 backdrop-blur-md transition-all shadow-xl hover:scale-110",
+                      isFavorite(meal.idMeal) ? "bg-[#FF6B6B] text-white" : "bg-white/20 text-white"
+                    )}
+                    aria-label="Toggle Favorite"
+                  >
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill={isFavorite(meal.idMeal) ? "currentColor" : "none"} xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </button>
+                )}
+              </div>
             </div>
           </div>
         </header>
@@ -112,7 +132,7 @@ export default function MealDetailPage() {
 
           {/* Instructions - BOTTOM on mobile, LEFT on desktop */}
           <div className="lg:col-span-8 lg:order-1 space-y-10 md:space-y-16">
-            <section>
+            <section className="bg-white p-6 md:p-10 lg:p-12 rounded-[2.5rem] shadow-sm border border-[#E5E7EB]">
               <h2 className="text-2xl md:text-3xl font-bold mb-6 md:mb-10 flex items-center gap-4">
                 <span className="w-8 h-1 bg-[#FF6B6B] rounded-full" />
                 Langkah Membuat

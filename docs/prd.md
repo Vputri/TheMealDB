@@ -51,13 +51,10 @@ Membangun aplikasi web yang modern, cepat, dan responsif menggunakan **Next.js**
 
 ---
 
-## 6. Phase 2 Features (Future Roadmap)
-
-Untuk rilis versi 2.0, fokus pengembangan akan diarahkan ke personalisasi dan optimasi pencarian:
+## 6. Phase 2 Features (Delivered)
+Fitur-fitur tambahan untuk personalisasi dan optimasi pencarian:
 1. **Fitur "My Favorites"**: Kemampuan pengguna untuk menyimpan/bookmark resep favorit mereka menggunakan penyimpanan lokal (`localStorage`).
 2. **Kategori Penjelajahan Alternatif**: Menambahkan opsi penjelajahan resep berdasarkan Kategori Makanan (Breakfast, Seafood, Dessert) dan Area Negara (Italian, Japanese).
-3. **Dark Mode Integration**: Sistem tema dinamis terang dan gelap penuh.
-4. **Implementasi i18n**: Dukungan multi-bahasa (Inggris dan konfigurasi terjemahan Bahasa Indonesia).
 
 ---
 

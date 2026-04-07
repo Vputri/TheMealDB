@@ -19,6 +19,17 @@ export type CategoryListResponse = {
   meals: Category[];
 };
 
+export type DetailedCategory = {
+  idCategory: string;
+  strCategory: string;
+  strCategoryThumb: string;
+  strCategoryDescription: string;
+};
+
+export type DetailedCategoryListResponse = {
+  categories: DetailedCategory[];
+};
+
 export type Area = {
   strArea: string;
 };

@@ -1,12 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { useFetch, fetchCategories } from "@/utils";
+import Image from "next/image";
+import { useFetch, fetchDetailedCategories } from "@/utils";
 import { ErrorState, EmptyState } from "@/component/common/state-display";
 
 export default function CategoriesPage() {
   const { data: categories, isLoading, error, refetch } = useFetch({
-    fetcher: fetchCategories,
+    fetcher: fetchDetailedCategories,
   });
 
   return (
@@ -36,9 +37,16 @@ export default function CategoriesPage() {
             <Link 
               key={item.strCategory} 
               href={`/category/${item.strCategory}`}
-              className="bg-white p-8 rounded-[2rem] shadow-sm border border-[#E5E7EB] flex items-center justify-center text-center transition-all hover:shadow-md hover:-translate-y-1 hover:border-[#FF6B6B]/20 group"
+              className="relative aspect-video rounded-[1.5rem] overflow-hidden shadow-sm flex items-center justify-center transition-all hover:shadow-lg hover:-translate-y-1 group"
             >
-              <h2 className="text-xl md:text-2xl font-bold text-[#1F2937] group-hover:text-[#FF6B6B] transition-colors">{item.strCategory}</h2>
+              <Image 
+                src={item.strCategoryThumb}
+                alt={item.strCategory}
+                fill
+                className="object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors" />
+              <h2 className="relative text-xl md:text-2xl font-bold text-white tracking-wide">{item.strCategory}</h2>
             </Link>
           ))}
         </div>

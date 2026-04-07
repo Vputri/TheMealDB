@@ -6,6 +6,7 @@ import type {
   MealDetail,
   ParsedIngredient,
   CategoryListResponse,
+  DetailedCategoryListResponse,
   AreaListResponse,
 } from "@/types/meal";
 
@@ -21,6 +22,13 @@ export async function fetchCategories() {
   if (!res.ok) throw new Error("Gagal memuat daftar kategori.");
   const data: CategoryListResponse = await res.json();
   return data.meals ?? [];
+}
+
+export async function fetchDetailedCategories() {
+  const res = await fetch(MEALDB_ENDPOINTS.listDetailedCategories);
+  if (!res.ok) throw new Error("Gagal memuat detail kategori.");
+  const data: DetailedCategoryListResponse = await res.json();
+  return data.categories ?? [];
 }
 
 export async function fetchAreas() {

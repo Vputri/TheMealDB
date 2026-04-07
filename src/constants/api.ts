@@ -4,6 +4,7 @@ export const MEALDB_IMAGE_URL = process.env.NEXT_PUBLIC_MEALDB_IMAGE_URL || "/im
 export const MEALDB_ENDPOINTS = {
   listIngredients: `${MEALDB_BASE_URL}/list.php?i=list`,
   listCategories: `${MEALDB_BASE_URL}/list.php?c=list`,
+  listDetailedCategories: `${MEALDB_BASE_URL}/categories.php`,
   listAreas: `${MEALDB_BASE_URL}/list.php?a=list`,
   filterByIngredient: (name: string) =>
     `${MEALDB_BASE_URL}/filter.php?i=${encodeURIComponent(name)}`,

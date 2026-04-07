@@ -14,10 +14,10 @@ export default function CategoriesPage() {
     <main className="max-w-7xl mx-auto px-6 py-12 pb-24 min-h-screen bg-[#F9FAFB]">
       <header className="mb-10 md:mb-16">
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-          <span className="text-[#FF6B6B]">Kategori</span> Makanan
+          <span className="text-[#FF6B6B]">Food</span> Categories
         </h1>
         <p className="text-[#6B7280] text-lg max-w-xl">
-          Eksplorasi berbagai jenis masakan dari seluruh dunia berdasarkan kategori utamanya.
+          Explore various cuisine types from around the world based on their primary categories.
         </p>
       </header>
 
@@ -30,7 +30,7 @@ export default function CategoriesPage() {
       ) : error ? (
         <ErrorState message={error} onRetry={refetch} />
       ) : !categories || categories.length === 0 ? (
-        <EmptyState title="Kategori Kosong" message="Tidak ada kategori masakan yang tersedia saat ini." />
+        <EmptyState title="No Categories Found" message="There are currently no food categories available." />
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {categories.map((item) => (

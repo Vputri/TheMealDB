@@ -25,17 +25,17 @@ export default function FavoritesPage() {
     <main className="max-w-7xl mx-auto px-6 py-12 pb-24 min-h-screen">
       <header className="mb-10 md:mb-16">
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-          Resep <span className="text-[#FF6B6B]">Favorit</span>
+          <span className="text-[#FF6B6B]">Favorite</span> Recipes
         </h1>
         <p className="text-[#6B7280] text-lg max-w-xl">
-          Koleksi resep terbaik pilihan Anda untuk dihidangkan kapan saja.
+          Your collection of best-picked recipes ready to cook anytime.
         </p>
       </header>
 
       {favorites.length === 0 ? (
         <EmptyState 
-          title="Belum ada favorit" 
-          message="Jelajahi bahan masakan atau kategori dan simpan resep yang Anda sukai." 
+          title="No Favorites Yet" 
+          message="Explore ingredients or categories and save the recipes you like." 
         />
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">

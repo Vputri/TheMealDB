@@ -15,10 +15,10 @@ export default function AreasPage() {
       <header className="mb-10 md:mb-16">
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 flex items-center gap-4">
           <GlobeIcon className="w-10 h-10 md:w-12 md:h-12 text-[#FF6B6B]" />
-          <span className="text-[#1F2937]">Area Negara</span>
+          <span className="text-[#1F2937]">Local Culinary</span>
         </h1>
         <p className="text-[#6B7280] text-lg max-w-xl">
-          Jelajahi keunikan rasa dari berbagai belahan dunia.
+          Discover unique flavors from various regions around the globe.
         </p>
       </header>
 
@@ -31,7 +31,7 @@ export default function AreasPage() {
       ) : error ? (
         <ErrorState message={error} onRetry={refetch} />
       ) : !areas || areas.length === 0 ? (
-        <EmptyState title="Area Kosong" message="Tidak ada area negara yang tersedia saat ini." />
+        <EmptyState title="No Areas Found" message="There are currently no culinary areas available." />
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {areas.filter(a => a.strArea !== "Unknown").map((item) => (

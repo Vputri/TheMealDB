@@ -23,7 +23,7 @@ export default function CategoryDetailPage() {
       <Breadcrumbs
         items={[
           { label: "Home", href: "/" },
-          { label: "Kategori", href: "/categories" },
+          { label: "Foods", href: "/categories" },
           { label: categoryName }
         ]}
       />
@@ -32,24 +32,24 @@ export default function CategoryDetailPage() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="space-y-4">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-              Masakan <br className="hidden md:block" /> 
-              <span className="text-[#FF6B6B]">{categoryName}</span>
+              <span className="text-[#FF6B6B]">{categoryName}</span> <br className="hidden md:block" /> 
+              Cuisine
             </h1>
             <p className="text-[#6B7280] text-lg max-w-xl">
-              Eksplorasi hidangan lezat dan menarik yang masuk ke dalam kategori <span className="font-semibold text-[#1F2937]">{categoryName}</span>.
+              Explore delicious and intriguing dishes that fall into the <span className="font-semibold text-[#1F2937]">{categoryName}</span> category.
             </p>
           </div>
           
           <div className="flex-1 max-w-md w-full">
             <div className="hidden md:block text-right mb-4">
               <span className="px-4 py-2 bg-white rounded-2xl shadow-sm border border-[#E5E7EB] text-sm font-medium text-[#6B7280]">
-                {filteredItems.length} Resep Terdaftar
+                {filteredItems.length} Recipes Listed
               </span>
             </div>
             <SearchInput
               value={query}
               onChange={setQuery}
-              placeholder={`Cari hidangan ${categoryName}...`}
+              placeholder={`Search ${categoryName} dishes...`}
             />
           </div>
         </div>
@@ -63,8 +63,8 @@ export default function CategoryDetailPage() {
         </div>
       ) : filteredItems.length === 0 ? (
         <EmptyState
-          title="Tidak ada masakan ditemukan"
-          message="Belum ada masakan yang terdaftar atau sesuai dengan pencarian Anda."
+          title="No dishes found"
+          message="No dishes are currently listed or match your search."
         />
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">

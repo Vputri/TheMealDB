@@ -35,23 +35,23 @@ export default function HomePage() {
           </div>
           
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-6 tracking-tight font-bold leading-[1.1]">
-            Cari <span className="text-[#FF6B6B] relative inline-block">
-              Bahan
+            Find <span className="text-[#FF6B6B] relative inline-block">
+              Cooking
               <svg className="absolute -bottom-2 left-0 w-full h-2 text-[#FF6B6B]/20" viewBox="0 0 100 10" preserveAspectRatio="none">
                 <path d="M0 5 Q 25 0 50 5 Q 75 10 100 5" fill="transparent" stroke="currentColor" strokeWidth="4" />
               </svg>
-            </span> Masakan
+            </span> Ingredients
           </h1>
           
           <p className="text-base sm:text-lg md:text-xl text-[#6B7280] max-w-2xl mx-auto mb-10 md:mb-14 leading-relaxed px-4">
-            Jelajahi berbagai bahan makanan dan temukan resep lezat untuk hidangan harian Anda. Mulai petualangan rasa hari ini!
+            Explore various ingredients and discover delicious recipes for your daily meals. Start your flavor adventure today!
           </p>
           
           <div className="max-w-3xl mx-auto px-2">
             <SearchInput 
               value={query} 
               onChange={setQuery} 
-              placeholder="Contoh: jahe, ayam, cokelat..." 
+              placeholder="Example: chicken, ginger, chocolate..." 
             />
           </div>
         </div>
@@ -70,9 +70,9 @@ export default function HomePage() {
         ) : (
           <>
             <div className="flex items-center justify-between mb-8">
-              <h2 className="text-2xl">Semua Bahan</h2>
+              <h2 className="text-2xl">All Ingredients</h2>
               <span className="text-sm font-medium text-[#6B7280]">
-                {filteredItems.length} Bahan ditemukan
+                {filteredItems.length} Ingredients found
               </span>
             </div>
             

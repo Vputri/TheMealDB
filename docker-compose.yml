@@ -1,0 +1,15 @@
+version: "3.7"
+
+services:
+  app:
+    build:
+      context: .
+      args:
+        - NEXT_PUBLIC_MEALDB_API_URL=${NEXT_PUBLIC_MEALDB_API_URL}
+        - NEXT_PUBLIC_MEALDB_IMAGE_URL=${NEXT_PUBLIC_MEALDB_IMAGE_URL}
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_MEALDB_API_URL=${NEXT_PUBLIC_MEALDB_API_URL}
+      - NEXT_PUBLIC_MEALDB_IMAGE_URL=${NEXT_PUBLIC_MEALDB_IMAGE_URL}
+    restart: always

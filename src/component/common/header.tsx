@@ -58,7 +58,7 @@ export function Header() {
       </header>
 
       {/* Mobile Bottom Navbar */}
-      <nav className="md:hidden fixed bottom-0 left-0 w-full bg-white border-t border-[#E5E7EB] px-6 py-2 z-50 flex items-center justify-between pb-safe shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
+      <nav className="md:hidden fixed bottom-0 left-0 w-full bg-white border-t border-[#E5E7EB] px-2 py-2 z-50 flex items-center justify-between pb-safe shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
         {links.map(link => {
           const isActive = pathname === link.href;
           return (
@@ -66,14 +66,14 @@ export function Header() {
               key={link.href} 
               href={link.href}
               className={cn(
-                "flex flex-col items-center justify-center w-16 h-14 gap-1 transition-all",
+                "flex flex-col items-center justify-center flex-1 h-14 gap-1 transition-all",
                 isActive ? "text-[#FF6B6B] -translate-y-1" : "text-[#9CA3AF] hover:text-[#6B7280]"
               )}
             >
               <div className={cn("transition-transform duration-300", isActive && "scale-110")}>
                 {link.icon}
               </div>
-              <span className="text-[10px] font-semibold">{link.name}</span>
+              <span className="text-[10px] font-semibold whitespace-nowrap">{link.name}</span>
             </Link>
           );
         })}
